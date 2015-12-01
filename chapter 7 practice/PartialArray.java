@@ -30,6 +30,9 @@ public class PartialArray
    }
    
    public void insert(int pos, int num){
+       if(this.currentSize == this.values.length){
+           this.grow();
+        }
        if( this.currentSize < this.values.length){
            this.currentSize++;
            for (int i = this.currentSize -1; i > pos; i--){
@@ -47,6 +50,23 @@ public class PartialArray
        }
    }
    
-   
+   public void grow(){
+       int[] newValues = new int [ this.currentSize * 2 ];
+       for (int i = 0; i < this.currentSize; i++){
+           newValues[i] = this.values[i];
+       }
+       
+       this.values = newValues;
+    }
+    
+   public static void main( String[] args){
+       PartialArray pa1 = new PartialArray();
+       pa1.swap(5,18);
+       pa1.remove(53);
+       pa1.insert(82,49);
+    
+    
+   }
+    
 }
         
