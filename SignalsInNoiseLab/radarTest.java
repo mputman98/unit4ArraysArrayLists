@@ -51,16 +51,16 @@ public class radarTest
         rad.setMonsterLocation(11,11);
         int[][] acc2 = new int[rad.getNumRows()][rad.getNumCols()];
         int k = 0;
+        while(k > 10){
+            rad.scan();
+            k++;
+        }
         for (int i = 0; i < acc2.length; i++){
            for (int x = 0; x < acc2[i].length; x++){
                acc2[i][x] = rad.getAccumulatedDetection(i,x);
             }
         }
         int best = acc2[0][0]; 
-        while(k > 10){
-            rad.scan();
-            k++;
-        }
         for (int i = 0; i < acc2.length; i++){
            for (int x = 0; x < acc2[i].length; x++){
                if(acc2[i][x] > best){
@@ -69,28 +69,6 @@ public class radarTest
             }
         }
         assertEquals(rad.getAccumulatedDetection(11,11), best);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
     }
